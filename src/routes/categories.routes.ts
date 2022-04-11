@@ -12,4 +12,4 @@ categoriesRoutes.get("/", (request, response) => {
     return listCategoryController.handle(request, response);
 });
 
-export { categoriesRoutes };
+export { categoriesRoutes }; 
