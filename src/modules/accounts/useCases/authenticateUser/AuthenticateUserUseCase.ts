@@ -25,10 +25,10 @@ class AuthenticateUserUseCase {
     private usersRepository: IUsersRepository
   ) { }
 
-  async execute({ email, password }: IRequest): Promise<IResponse>{
+  async execute({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email);
 
-    if(!user){
+    if (!user) {
       throw new Error("Email or password incorrect!");
     }
 
@@ -43,10 +43,15 @@ class AuthenticateUserUseCase {
       expiresIn: "1d",
     });
 
-    return {
-      user,
+    const tokenReturn: IResponse = {
       token,
+      user: {
+        name: user.name,
+        email: user.email,
+      },
     };
+
+    return tokenReturn;
   }
 }
 
