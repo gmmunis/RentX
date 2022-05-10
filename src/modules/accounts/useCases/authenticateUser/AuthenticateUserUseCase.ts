@@ -1,9 +1,8 @@
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
-import { IUsersRepository } from "@modules/accounts/repositories/implementations/IUsersRepository";
-import { AppError } from "@errors/AppError";
-
+import { AppError } from "@shared/errors/AppError";
+import { IUsersRepository } from "@modules/accounts/infra/typeorm/repositories/IUsersRepository";
 
 interface IRequest {
   email: string;
@@ -17,7 +16,6 @@ interface IResponse {
   };
   token: string;
 }
-
 
 @injectable()
 class AuthenticateUserUseCase {
