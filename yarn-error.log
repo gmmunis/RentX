@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\DELL\Desktop\Ignite\Rentx\.yarn\releases\yarn-1.22.18.cjs add tsconfig-paths -D
+  C:\Program Files\nodejs\node.exe C:\Users\DELL\Desktop\Ignite\Rentx\.yarn\releases\yarn-1.22.18.cjs add dayjs
 
 PATH: 
-  C:\Users\DELL\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\DELL\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\DELL\AppData\Local\Microsoft\WindowsApps;C:\Users\DELL\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\DELL\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\Users\DELL\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\DELL\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Amazon\AWSCLIV2;C:\Users\DELL\AppData\Local\Microsoft\WindowsApps;C:\Users\DELL\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\DELL\AppData\Roaming\npm;C:\terraform;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.22.18
@@ -23,9 +23,10 @@ npm manifest:
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-      "dev": "ts-node-dev --poll --inspect --transpile-only --ignore-watch node-modules --respawn src/server.ts",
-      "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-      "test": "jest"
+      "dev": "ts-node-dev -r tsconfig-paths/register --poll --inspect --transpile-only --ignore-watch node-modules --respawn src/shared/infra/http/server.ts",
+      "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
+      "test": "jest",
+      "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
     },
     "dependencies": {
       "@types/jsonwebtoken": "^8.5.8",
@@ -52,6 +53,7 @@ npm manifest:
       "@types/uuid": "^8.3.4",
       "ts-jest": "^27.1.4",
       "ts-node-dev": "^1.1.8",
+      "tsconfig-paths": "^4.0.0",
       "typescript": "^4.6.3"
     }
   }
@@ -3487,6 +3489,15 @@ Lockfile:
       make-error "^1.1.1"
       source-map-support "^0.5.17"
       yn "3.1.1"
+  
+  tsconfig-paths@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-4.0.0.tgz#1082f5d99fd127b72397eef4809e4dd06d229b64"
+    integrity sha512-SLBg2GBKlR6bVtMgJJlud/o3waplKtL7skmLkExomIiaAtLGtVsoXIqP3SYdjbcH9lq/KVv7pMZeCBpLYOit6Q==
+    dependencies:
+      json5 "^2.2.1"
+      minimist "^1.2.6"
+      strip-bom "^3.0.0"
   
   tsconfig@^7.0.0:
     version "7.0.0"
