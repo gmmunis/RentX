@@ -61,7 +61,7 @@ export class CreateRentals1654607274555 implements MigrationInterface {
                     },
                     {
                         name: "FKUserRental",
-                        referencedTableName: "cars",
+                        referencedTableName: "users",
                         referencedColumnNames: ["id"],
                         columnNames: ["user_id"],
                         onDelete: "SET NULL",
