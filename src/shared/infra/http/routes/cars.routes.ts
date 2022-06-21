@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from "multer";
-import uploadConfig from "../../../../../src/config/Upload";
+import uploadConfig from "../../../../config/upload";
 import { CreateCarController } from "@modules/cars/useCases/createCar/CreateCarController";
 import { ensureAdmin } from "../middlewares/ensureAdmin";
 import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
