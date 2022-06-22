@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { SendForgotPasswordMailuseCase } from "./sendForgotPasswordMailuseCase";
+import { SendForgotPasswordMailuseCase } from "./SendForgotPasswordMailuseCase";
 
 class SendForgotPasswordMailController {
     async handle(request: Request, response: Response): Promise<Response> {
