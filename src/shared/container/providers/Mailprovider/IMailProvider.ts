@@ -1,5 +1,5 @@
 interface IMailProvider {
-    sendmail(to: string, subject: string, body: string): Promise<void>;
+    sendmail(to: string, subject: string, variables: any, path: string): Promise<void>;
 }
 
 export { IMailProvider };
