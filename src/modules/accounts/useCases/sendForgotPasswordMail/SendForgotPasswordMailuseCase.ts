@@ -42,7 +42,7 @@ class SendForgotPasswordMailuseCase {
             link: `${process.env.FORGOT_MAIL_URL}${token}`,
         };
 
-        await this.mailProvider.sendmail(email, "Recuperação de senha",
+        await this.mailProvider.sendMail(email, "Recuperação de senha",
             variables,
             templatePath
         );
