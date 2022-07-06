@@ -1,4 +1,5 @@
 import { IUsersRepository } from "@modules/accounts/infra/typeorm/repositories/IUsersRepository";
+import { IUsersTokensRepository } from "@modules/accounts/infra/typeorm/repositories/IUsersTokensRepository";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
 import { hash } from "bcryptjs";
@@ -13,7 +14,7 @@ interface IRequest {
 class ResetPasswordUserUseCase {
     constructor(
         @inject("UsersTokensRepository")
-        private usersTokensRepository: IUsersRepository,
+        private usersTokensRepository: IUsersTokensRepository,
         @inject("DayjsDateProvider")
         private dateProvider: IDateProvider,
         @inject("UsersRepository")
