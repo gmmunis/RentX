@@ -1,9 +1,10 @@
-import request from "supertest";
 import { hash } from "bcryptjs";
+import request from "supertest";
+import { Connection } from "typeorm";
 import { v4 as uuid } from "uuid";
+
 import { app } from "@shared/infra/http/app";
 import createConnection from "@shared/infra/typeorm";
-import { Connection } from "typeorm";
 
 let connection: Connection;
 describe("Create Category Controller", () => {
@@ -16,8 +17,8 @@ describe("Create Category Controller", () => {
 
         await connection.query(
             `INSERT INTO USERS(id, name, email, password, "isAdmin", created_at, driver_license ) 
-              values('${id}', 'admin', 'admin@rentx.com.br', '${password}', true, 'now()', 'XXXXXX')
-            `
+        values('${id}', 'admin', 'admin@rentx.com.br', '${password}', true, 'now()', 'XXXXXX')
+      `
         );
     });
 
@@ -26,7 +27,7 @@ describe("Create Category Controller", () => {
         await connection.close();
     });
 
-    it("should be able to list all categories", async () => {
+    it("should be able to list all categories ", async () => {
         const responseToken = await request(app).post("/sessions").send({
             email: "admin@rentx.com.br",
             password: "admin",
@@ -34,10 +35,15 @@ describe("Create Category Controller", () => {
 
         const { refresh_token } = responseToken.body;
 
-        await request(app).post("/categories").send({
-            name: "Category Supertest",
-            description: "Category Supertest",
-        }).set({ Authorization: `Bearer ${refresh_token}`, });
+        await request(app)
+            .post("/categories")
+            .send({
+                name: "Category Supertest",
+                description: "Category Supertest",
+            })
+            .set({
+                Authorization: `Bearer ${refresh_token}`,
+            });
 
         const response = await request(app).get("/categories");
 
