@@ -1,8 +1,8 @@
-import upload from "@config/upload";
 import { S3 } from "aws-sdk";
 import fs from "fs";
 import mime from "mime";
 import { resolve } from "path";
+import upload from "@config/upload";
 import { IStorageProvider } from "../IStorageProvider";
 
 class S3StorageProvider implements IStorageProvider {
