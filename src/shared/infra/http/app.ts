@@ -11,9 +11,12 @@ import createConnection from "../typeorm";
 import swaggerFile from "../../../swagger.json";
 import { router } from "./routes";
 import upload from "@config/Upload";
+import rateLimiter from "./middlewares/rateLimiter";
 
 createConnection();
 const app = express();
+
+app.use(rateLimiter);
 
 app.use(express.json());
 
