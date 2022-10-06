@@ -12,4 +12,4 @@ interface ICreateCarDTO {
     id?: string;
 }
 
-export { ICreateCarDTO };
+export { ICreateCarDTO }; 
