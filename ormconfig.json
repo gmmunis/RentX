@@ -1,7 +1,8 @@
 {
+<<<<<<< HEAD
     "type": "postgres",
     "port": 5432,
-    "host": "database_ignite",
+    "host": "localhost",
     "username": "docker",
     "password": "ignite",
     "database": "rentx",
@@ -15,3 +16,17 @@
         "migrationsDir": "./dist/shared/infra/typeorm/migrations"
     }
 }
+=======
+  "type": "postgres",
+  "port": 5432,
+  "host": "localhost",
+  "username": "docker",
+  "password": "ignite",
+  "database": "rentx", 
+  "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+  "entities": ["./src/modules/**/entities/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/shared/infra/typeorm/migrations"
+  }
+}
+>>>>>>> 8c2a495334381d9760b7d90925c80c50c357f764
