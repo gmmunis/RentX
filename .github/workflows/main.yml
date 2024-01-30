@@ -34,15 +34,15 @@ jobs:
           target: "~/rentx-api/Rentx"
           
       - name: Update API
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@V1.0.3
         with:
-         host: ${{ secrets.SSH_HOST }}
-         username: ${{ secrets.SSH_USER }}
-         port: ${{ secrets.SSH_PORT }}
-         key: ${{ secrets.SSH_KEY }}
-         source: "., !node_modules, !ormconfig.json, !docker-compose.yml"
-         script: |
-           cd ~/app/Rentx
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "., !node_modules, !ormconfig.json, !docker-compose.yml"
+          script: |
+           cd ~/rentx-api/Rentx
            yarn
            ./node_modules/.bin/typeorm migration:run
            pm2 restart rentx_api
